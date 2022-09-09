@@ -38,6 +38,17 @@
             var sum1 = arr1.Sum(x => Math.Abs(x));
             Console.WriteLine(sum);
             Console.WriteLine(sum1);
+
+            //Array of Multiples
+            var num = 12;
+            var length1 = 10;
+            int[] arr2 = new int[length1];
+            for (int i = 0; i < length1; i++)
+            {
+                arr2[i] = num * (i + 1);
+            }
+            Console.WriteLine(arr2);
+
             Console.ReadLine();
         }
     }
