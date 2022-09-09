@@ -17,6 +17,15 @@
                 }
             }
             Console.WriteLine(count);
+
+            //Multipy by length problem
+            int[] arr = { 2, 3, 1, 0 };
+            var length = arr.Length;
+            for (int i = 0; i < length; i++)
+            {
+                arr[i] = arr[i] * length;
+            }
+            Console.WriteLine(arr);
             Console.ReadLine();
         }
     }
