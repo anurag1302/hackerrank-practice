@@ -48,6 +48,52 @@
                 arr2[i] = num * (i + 1);
             }
             Console.WriteLine(arr2);
+            char c1 = (char)1;
+            char abc = 'A';
+            var abcd = ((int)'D').ToString();
+            Console.WriteLine(abcd);
+
+            Console.WriteLine(c1);
+
+            var input = "Honesty is the best policy";
+            //var arr = input.ToCharArray();
+            var splittedArray = input.Split(' ');
+            var reverseArry = new string[splittedArray.Length];
+            //Array.Reverse(splittedArray);
+            var str = string.Join(" ", splittedArray);
+
+            //for (int i = splittedArray.Length - 1; i >= 0; i--)
+            //{
+            //    var temp = splittedArray[i];
+            //    reverseArry[i] = temp;
+            //}
+            Console.WriteLine(str);
+            //Console.WriteLine(reverseArry.Join(" "));
+
+            for (int i = 0; i < splittedArray.Length; i++)
+            {
+                reverseArry[splittedArray.Length - i - 1] = splittedArray[i];
+            }
+            var str23 = string.Join(" ", reverseArry);
+            Console.WriteLine(str23);
+
+            var counter = 5;
+            for (int i = 0; i < counter; i++)
+            {
+                for (int j = 0; j <= i; j++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine("\n");
+            }
+            for (int i = counter - 1; i > 0; i--)
+            {
+                for (int j = i; j > 0; j--)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine("\n");
+            }
 
             Console.ReadLine();
         }
