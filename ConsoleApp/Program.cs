@@ -94,7 +94,121 @@
                 }
                 Console.WriteLine("\n");
             }
+            Console.WriteLine("******************************");
+            //reverse
+            int[] array1 = { 23, 21, 45, 32, 99, 99, 45, 45, 23 };
+            int[] array2 = new int[array1.Length];
+            for (int i = array1.Length - 1; i >= 0; i--)
+            {
+                Console.Write(array1[i] + "\t");
+            }
+            Console.WriteLine();
+            var sum2 = 0;
+            for (int i = 0; i < array1.Length; i++)
+            {
+                sum2 += array1[i];
+            }
+            Console.WriteLine(sum2);
+            var sum3 = array1.Sum(x => x);
+            Console.WriteLine(sum3);
+            for (int i = 0; i < array1.Length; i++)
+            {
+                array2[i] = array1[i];
+            }
 
+            //Duplicates using LINQ
+            var duplicates = array1
+                .GroupBy(x => x)
+                .Select(y => new
+                {
+                    num = y.Key,
+                    count = y.Count()
+                }).ToList();
+
+            var maxCount = duplicates
+                .Max(x => x.count);
+
+            var maxNum = duplicates
+                .Where(x => x.count == maxCount)
+                .FirstOrDefault().num;
+
+            // Duplicates using Dictionary
+            var dictionary = new Dictionary<int, int>();//key - number, value - count
+
+            for (int i = 0; i < array1.Length; i++)
+            {
+                if (dictionary.ContainsKey(array1[i]))
+                {
+                    dictionary[array1[i]]++;
+                }
+                else
+                {
+                    dictionary.Add(array1[i], 1);
+                }
+            }
+
+            var maxCounter = dictionary.Max(x => x.Value);
+            var maxNumber = dictionary.Where(x => x.Value == maxCount).FirstOrDefault().Key;
+
+            //Unique Elements
+            foreach (var item in dictionary)
+            {
+                if (item.Value == 1)
+                {
+                    Console.WriteLine("Unique Items - " + item.Key);
+                }
+            }
+
+            //Merge 2 arrays of same length and return a sorted array
+            int[] arr11 = { 1, 2, 3 };
+            int[] arr12 = { 1, 2, 3 };
+            int[] arr13 = new int[arr11.Length + arr12.Length];
+            int a, b;
+            for (a = 0; a < arr11.Length; a++)
+            {
+                arr13[a] = arr11[a];
+            }
+            for (b = 0; b < arr12.Length; b++)
+            {
+                arr13[a] = arr12[b];
+                a++;
+            }
+            //Array.Sort(arr13);
+
+            //Sort using 2 loops
+            for (int i = 0; i < arr13.Length; i++)
+            {
+                for (int j = 0; j < arr13.Length - 1; j++)
+                {
+                    if (arr13[j] >= arr13[j + 1])
+                    {
+                        var temp = arr13[j];
+                        arr13[j] = arr13[j + 1];
+                        arr13[j + 1] = temp;
+                    }
+                }
+            }
+            for (int k = 0; k < arr13.Length; k++)
+            {
+                Console.WriteLine(arr13[k]);
+            }
+
+            int max = array1[0];
+            int minm = array1[0];
+
+            for (int i = 1; i < array1.Length; i++)
+            {
+                if (array1[i] > max)
+                {
+                    max = array1[i];
+                }
+                if (array1[i] < minm)
+                {
+                    minm = array1[i];
+                }
+            }
+
+            Console.WriteLine($"Max: {max}, Min: {minm}");
             Console.ReadLine();
         }
     }
